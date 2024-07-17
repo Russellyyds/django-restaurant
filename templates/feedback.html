@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block class %}class="sub_page"{% endblock class %}
+{% block feedback_status %}active{% endblock feedback_status %}
+{% block main %}
+
+  <!-- start feedback form -->
+
+  <section class="book_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          FeedBack
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+            <form action="{% url "Book_Table" %}" method='POST'>{% csrf_token %}
+              <div>
+                <input type="text" class="form-control" name="user_name" required placeholder="Your Name" />
+              </div>
+              <div class="mb-3">
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="Description" rows="5" required  placeholder="Describe your experience here"></textarea>
+              </div>
+              <div>
+                <select class="form-control nice-select wide" required name="total_person">
+                  <option value="" disabled selected>
+                    Please Give Us Rating?
+                  </option>
+                  <option value="1">
+                    1
+                  </option>
+                  <option value="2">
+                    2
+                  </option>
+                  <option value="3">
+                    3
+                  </option>
+                  <option value="4">
+                    4
+                  </option>
+                  <option value="5">
+                    5
+                  </option>
+                </select>
+              </div>
+              <div>
+                <label for="formFileLg" class="form-label">Select Image</label>
+                <input class="form-control form-control-lg" id="formFileLg" type="file">
+              </div>
+              <div class="btn_box">
+                <button class="col-md-12 text-center font-weight-bold ">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+          <div class="col-md-6">
+{#              <div class="image-container">#}
+                  <img width="100%" style="box-shadow: 0 4px 8px rgba(0.3, 0.4, 0.5, 1);"  class="image-container" src="{% static 'images/feedback.jpg' %}" alt="feedback">
+{#              </div>#}
+          </div>
+      </div>
+    </div>
+  </section>
+  <!-- end feedback form -->
+
+{% endblock main %}
